@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Rock-Paper-Scissors
+    </title>
+    <style>
+      #clear {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <h2>
+        Rock-Paper-Scissors
+      </h2>
+    </p>
+    <p>
+      <button id="rock" onclick="playGame('Rock')">Rock</button>
+      <button id="paper" onclick="playGame('Paper')">Paper</button>
+      <button id="scissors" onclick="playGame('Scissors')">Scissors</button>
+    </p>
+    <p>
+      Player Wins: <span id="win">0</span>&nbsp;&nbsp;&nbsp;
+      Computer Wins: <span id="lose">0</span>&nbsp;&nbsp;&nbsp;
+      Ties: <span id="tie">0</span>
+    </p>
+    <p>
+      Number of Moves: <span id="counter">0</span>
+    </p>
+    <p>
+      <h2>
+        &nbsp;&nbsp;<span id="match"></span>
+        <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="clear" onclick="restart()">Restart</button>
+      </br>
+    </h2>
+  </p>
+  <script>
+    let game = JSON.parse(localStorage.getItem('game') || {
+      counter: 0,
+      win: 0,
+      lose: 0,
+      tie: 0
+    });
+    
+    // Atualiza a interface com os valores armazenados
+    document.getElementById('counter').textContent = game.counter;
+    document.getElementById('win').textContent = game.win;
+    document.getElementById('lose').textContent = game.lose;
+    document.getElementById('tie').textContent = game.tie;
+
+    function getComputerMove() {
+      let randomNumber = Math.random();
+      if (randomNumber < 1/3) {
+        return 'Rock';
+      } else if (randomNumber < 2/3) {
+        return 'Paper';
+      } else {
+        return 'Scissors';
+      }
+    }
+  
+    function processPlayerMove (playerMove, computerMove) {
+      const win1 = '-- YOU WIN --';
+      const lose1 = '-- YOU LOSE --';
+      const tie1 = '-- YOU TIE --';
+
+      //console.log(`Player Move: ${playerMove}`);
+      //console.log(`Computer Move: ${computerMove}`);
+
+      if (computerMove === playerMove) {
+        game.tie++;
+        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${tie1}`);
+        //console.log('-- YOU TIE --');
+      } else if (
+        (playerMove === 'Rock' && computerMove === 'Scissors') ||
+        (playerMove === 'Paper' && computerMove === 'Rock') ||
+        (playerMove === 'Scissors' && computerMove === 'Paper')
+      ) {
+        game.win++;
+        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${win1}`);
+        //console.log('-- YOU WIN --');
+      } else {
+        game.lose++;
+        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${lose1}`);
+        //console.log('-- YOU LOSE --');
+      }
+
+      game.counter++;
+
+      localStorage.setItem('game', JSON.stringify(game));
+
+      document.getElementById('counter').textContent = game.counter;
+      document.getElementById('win').textContent = game.win;
+      document.getElementById('lose').textContent = game.lose;
+      document.getElementById('tie').textContent = game.tie;
+
+      checkMatch();
+    }
+
+    function playGame (playerMove) {
+      let computerMove = getComputerMove();
+      processPlayerMove(playerMove, computerMove);
+    }
+
+    function checkMatch () {
+      if (game.win === 5) {
+        document.getElementById('match').textContent = 'You win the match!';
+        document.getElementById('clear').style.display = 'inline';
+      } else if (game.lose === 5) {
+        document.getElementById('match').textContent = 'You lose the match!';
+        document.getElementById('clear').style.display = 'inline';
+      }
+    }
+
+    function restart() {
+      game.counter = 0;
+      game.win = 0;
+      game.lose = 0;
+      game.tie = 0;
+      localStorage.removeItem('game');
+      document.getElementById('counter').textContent = game.counter;
+      document.getElementById('win').textContent = game.win;
+      document.getElementById('lose').textContent = game.lose;
+      document.getElementById('tie').textContent = game.tie;
+      document.getElementById('match').textContent = '';
+      document.getElementById('clear').style.display = 'none';
+    }
+    </script>
+  </body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Rock-Paper-Scissors
+    </title>
+  </head>
+  <body>
+    <p>
+      <h2>
+        Rock-Paper-Scissors
+      </h2>
+    </p>
+    <p>
+      <button id="rock" onclick="
+        playGame('Rock'); 
+      ">Rock</button>
+      <button id="paper" onclick="
+        playGame('Paper');
+      ">Paper</button>
+      <button id="scissors" onclick="
+        playGame('Scissors');
+      ">Scissors</button>
+    </p>
+    <p>
+      
+      Player Wins: <span id="win">0</span>&nbsp&nbsp&nbsp;
+      Computer Wins: <span id="lose">0</span>&nbsp&nbsp&nbsp;
+      Ties: <span id="tie">0</span>
+    </p>
+    <p>
+      Number of Moves: <span id="counter">0</span>
+    </p>
+    <script>
+      let counter = 0, win = 0, lose = 0, tie = 0;
+      function playGame(playerMove)
+      {
+        const win1 = '-- YOU WIN --';
+        const lose1 = '-- YOU LOSE --';
+        const tie1 = '-- YOU TIE --'; 
+        let randomNumber = Math.random();
+        let computerMove = '';
+
+        if (randomNumber < 1/3) {
+          computerMove = 'Rock';
+        } else if (randomNumber < 2/3) {
+          computerMove = 'Paper';
+        } else {
+          computerMove = 'Scissors';
+        }
+
+        console.log(`Player Move: ${playerMove}`);
+        console.log(`Computer Move: ${computerMove}`);
+        
+        if (computerMove === playerMove)
+        {
+          tie++;
+          alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${tie1}`);
+          console.log('-- YOU TIE --');
+        }
+        else if (
+          (playerMove === 'Rock' && computerMove === 'Scissors') ||
+          (playerMove === 'Paper' && computerMove === 'Rock') ||
+          (playerMove === 'Scissors' && computerMove === 'Paper'))
+        {
+          win++;
+          alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${win1}`);
+          console.log('-- YOU WIN --');
+        }
+        else
+        {
+          lose++;
+          alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${lose1}`);
+          console.log('-- YOU LOSE --');
+        }
+
+        counter++;
+        document.getElementById('counter').textContent = counter;
+        document.getElementById('win').textContent = win;
+        document.getElementById('lose').textContent = lose;
+        document.getElementById('tie').textContent = tie;
+      }
+    </script>
+  </body>
+</html> -->

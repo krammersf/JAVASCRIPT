@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../javascript-course"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JS-Practice"
+	}
+}
