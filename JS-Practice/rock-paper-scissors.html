@@ -38,12 +38,12 @@
     </h2>
   </p>
   <script>
-    let game = JSON.parse(localStorage.getItem('game') || {
+    let game = JSON.parse(localStorage.getItem('game')) || {
       counter: 0,
       win: 0,
       lose: 0,
       tie: 0
-    });
+    };
     
     // Atualiza a interface com os valores armazenados
     document.getElementById('counter').textContent = game.counter;
@@ -72,7 +72,7 @@
 
       if (computerMove === playerMove) {
         game.tie++;
-        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${tie1}`);
+        //alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${tie1}`);
         //console.log('-- YOU TIE --');
       } else if (
         (playerMove === 'Rock' && computerMove === 'Scissors') ||
@@ -80,11 +80,11 @@
         (playerMove === 'Scissors' && computerMove === 'Paper')
       ) {
         game.win++;
-        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${win1}`);
+        //alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${win1}`);
         //console.log('-- YOU WIN --');
       } else {
         game.lose++;
-        alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${lose1}`);
+        //alert(`Player Move: ${playerMove}\nComputer Move: ${computerMove}\n${lose1}`);
         //console.log('-- YOU LOSE --');
       }
 
