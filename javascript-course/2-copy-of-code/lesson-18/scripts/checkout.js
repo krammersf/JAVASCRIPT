@@ -29,6 +29,18 @@ async function loadPage() {
 loadPage();
 
 /*
+// fred
+async function loadPage() {
+  await loadProductsFetch();
+  await loadCart();
+
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+loadPage();
+*/
+
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve) => {
@@ -71,5 +83,20 @@ loadProducts(() => {
     renderOrderSummary();
     renderPaymentSummary();
   });
+});
+*/
+
+
+
+/* // FRED
+new Promise((resolve) => {
+    loadProducts(() => {
+      resolve();
+  });
+})
+
+loadProducts(() => {
+  renderOrderSummary();
+  renderPaymentSummary();
 });
 */
