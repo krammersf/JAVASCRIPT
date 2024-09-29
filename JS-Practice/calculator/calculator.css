@@ -1,0 +1,88 @@
+/* body {
+  font-family: Arial;
+  background-color: rgb(0, 0, 0);
+} */
+
+.css-body {
+  font-family: Arial;
+  background-color: rgb(0, 0, 0);
+}
+
+.css-name {
+  color: rgb(156, 197, 206);
+  font-size: 45px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+  border: 3px solid aliceblue;
+  display: inline-block;
+  padding: 3px 7px;
+}
+
+.css-calculation {
+  color: white;
+  font-size: 45px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.css-calculator-button {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.css-gray-button {
+  background-color: rgb(51, 51, 51);
+  color: white;
+}
+
+.css-orange-button {
+  background-color: rgb(250, 154, 0);
+  color: white;
+}
+
+.css-green-button {
+  background-color: rgb(32, 199, 116);
+  margin-right: 10px;
+  color: white;
+}
+
+.css-clear-button {
+  height: 60px; /* Define a mesma altura para ambos os botões */
+  color: white;
+  background-color: rgb(244, 9, 33);
+  font-size: 17px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.css-calculator-button2 {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(244, 9, 33);
+}
+
+.css-image-left-arrow {
+  height: 33px;
+  width: auto;
+  background-color: rgb(244, 9, 33);
+}
